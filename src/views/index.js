@@ -13,8 +13,8 @@ const NotFound=Loadable({
     loader:()=>import("./NotFound"),
     loading:Loading
 })
-const Settings=Loadable({
-    loader:()=>import("./settings"),
+const Bmanagement=Loadable({
+    loader:()=>import("./bmanagement"),
     loading:Loading
 })
 const Users=Loadable({
@@ -27,6 +27,6 @@ export{
     Home,
     Login,
     NotFound,
-    Settings,
+    Bmanagement,
     Users
 }

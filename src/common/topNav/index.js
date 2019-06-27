@@ -1,8 +1,9 @@
 import React from "react"
-import {Layout, Menu,Row, Col } from 'antd';
+import {Layout, Menu,Row, Col ,Icon} from 'antd';
 import logo from "../../static/logo.png"
+import "./index.css"
 const {Header} = Layout;
-// const { SubMenu } = Menu;
+const { SubMenu } = Menu;
 export default class TopNav extends React.Component{
     render(){
         return(
@@ -26,23 +27,20 @@ export default class TopNav extends React.Component{
                    </Menu>
                </Col>
                <Col span={2}>
-                   <Menu className="tuichu"
-                   defaultSelectedKeys={['login']}>
-                       {/* <SubMenu
+                   <Menu mode="horizontal" className="adminInfo">
+                       <SubMenu
                        title={
                            <span className="submenu-title-wrapper">
                            <Icon type="setting" />
-                               Admin
+                               admin
                            </span>
                        }
                        >
-                       <Menu.ItemGroup title="Item 1">
-                           <Menu.Item key="setting:1">退出登录</Menu.Item>
-                           <Menu.Item key="setting:2">Option 2</Menu.Item>
-                       </Menu.ItemGroup>
-                       </SubMenu> */}
-                       
-                       <Menu.Item key="login">退出登录</Menu.Item>
+                        <Menu.Item key="setting:1">退出登录</Menu.Item>
+                       {/* <Menu.ItemGroup title="Item 1">
+                           
+                       </Menu.ItemGroup> */}
+                       </SubMenu>
                    </Menu>
                </Col>
              </Row>
