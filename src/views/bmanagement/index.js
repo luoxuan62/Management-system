@@ -3,17 +3,21 @@ import { Card,Button,Table } from 'antd';
 import {blist} from "../../api/blist"
 import "./index.css"
 import XLSX from "xlsx"
-export default class Bmanagement extends React.Component{
+import {connect} from "react-redux"
+import ModalCom from "../../components/modal"
+import {tabSaveAction} from "../../action/tabAction"
+class Bmanagement extends React.Component{
   constructor(){
     super()
     this.state={
       dataSource:[],
       columns:[],
-      flag:true
+      flag:true,
+      modalStatus:false
     }
   }
     render(){
-      let {dataSource,columns,flag}=this.state
+      let {dataSource,columns,flag,modalStatus}=this.state
         return(
             <div>
                 <Card title="商家列表" bordered={false} extra={<Button onClick={this.exportFile.bind(this)}>导出excel</Button>}>
@@ -28,6 +32,7 @@ export default class Bmanagement extends React.Component{
                         onChange:this.handleChange.bind(this)
                 }}/>;
                 </Card>
+                <ModalCom modalStatus={modalStatus}/>
             </div>
         )
     }
@@ -83,9 +88,14 @@ export default class Bmanagement extends React.Component{
       })
      
     }
+    //编辑
     handleUpdate(record){
-      console.log(record)
+      this.setState({
+        modalStatus:true
+      })
+      this.props.tabSaveData(record)
     }
+    //删除
     handleDelete(record){
       console.log(record)
     }
@@ -105,3 +115,9 @@ export default class Bmanagement extends React.Component{
       XLSX.writeFile(wb, "sheetjs.xlsx")
     };
 }
+const mapDispatchToprops=(dispatch)=>({
+  tabSaveData(val){
+    dispatch(tabSaveAction(val))
+  }
+})
+export default connect(null,mapDispatchToprops)(Bmanagement)
