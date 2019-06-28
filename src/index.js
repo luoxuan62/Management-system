@@ -10,7 +10,7 @@ ReactDOM.render(
       <Provider store={store}>
             <Switch>
                 <Route path="/admin" render={()=>{
-                    return <App/>
+                    return window.sessionStorage.getItem('token') ? <App/>:<Redirect from="/" to="/login" exact/>
                 }}/>
                 {
                     mainRoute.map((item,index)=>(
