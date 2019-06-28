@@ -21,6 +21,11 @@ const Users=Loadable({
     loader:()=>import("./users"),
     loading:Loading
 })
+const AddBusiness=Loadable({
+    loader:()=>import("./addBusiness"),
+    loading:Loading
+})
+
 
 
 export{
@@ -28,5 +33,6 @@ export{
     Login,
     NotFound,
     Bmanagement,
-    Users
+    Users,
+    AddBusiness
 }

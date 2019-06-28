@@ -4,7 +4,8 @@ import {
     Login,
     NotFound,
     Users,
-    Bmanagement
+    Bmanagement,
+    AddBusiness
 } from "../views"
 //基础路由
 export const mainRoute = [
@@ -28,17 +29,18 @@ export const pageRoute = [
     },
     {
         pathname:"/admin/bmanagement",
-        component:Bmanagement,
         title:"商家管理",
         icon:"copy",
         children:[
             {
                 title:"商家列表",
-                pathname:"/admin/bmanagement"
+                pathname:"/admin/bmanagement",
+                component:Bmanagement
             },
             {
                 title:"商家店铺",
-                pathname:"/admin/settings2"
+                pathname:"/admin/addBusiness",
+                component:AddBusiness
             }
         ]
     },

@@ -6,13 +6,14 @@ class FormCon extends React.Component{
         super()
         this.state={
             validateStatus:"",
-            msg:""
+            msg:"",
+            help:""
         }
     }
     render(){
         console.log(this.props)
         let {data}=this.props
-        let {validateStatus,msg}=this.state
+        let {validateStatus,msg,help}=this.state
         const { getFieldDecorator } = this.props.form;
         return(
             <Form
@@ -23,17 +24,17 @@ class FormCon extends React.Component{
                 <Form.Item
                     label="商家ID"
                     validateStatus={validateStatus}
+                    help={help}
                 >
                     {getFieldDecorator('id', {
                     rules: [{ required: true, message: 'Please input your id!' },
-                    {validator:this.handleValidator.bind(this),message:{msg}}
+                    {validator:this.handleValidator.bind(this)}
                 ],
-                    
+                   initialValue:data.id    //数据获取
                   })(
                     <Input
                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                     placeholder="id"
-                    // value={data.id}
                     />
                 )}
                 </Form.Item>
@@ -43,11 +44,11 @@ class FormCon extends React.Component{
                 >
                     {getFieldDecorator('name', {
                     rules: [{ required: true, message: 'Please input your name!' }],
+                    initialValue:data.name
                   })(
                     <Input
                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                     placeholder="name"
-                    // value={data.name}
                     />
                   )}
                 </Form.Item>
@@ -57,11 +58,11 @@ class FormCon extends React.Component{
                 >
                     {getFieldDecorator('address', {
                     rules: [{ required: true, message: 'Please input your address!' }],
+                    initialValue:data.address
                   })(
                     <Input
                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                     placeholder="address"
-                    // value={data.address}
                     />
                   )}
                 </Form.Item>
@@ -71,11 +72,11 @@ class FormCon extends React.Component{
                 >
                     {getFieldDecorator('tel', {
                     rules: [{ required: true, message: 'Please input your tel!' }],
+                    initialValue:data.tel
                   })(
                     <Input
                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                     placeholder="tel"
-                    // value={data.tel}
                     />
                   )}
                 </Form.Item>
@@ -93,12 +94,12 @@ class FormCon extends React.Component{
         if(value!="123"){
             this.setState({
                 validateStatus:"error",
-                msg:"输入123"
+                help:"只能输入123"
             })
         }else{
             this.setState({
                 validateStatus:"success",
-                msg:"666"
+                help:""
             })
         }
         callback()

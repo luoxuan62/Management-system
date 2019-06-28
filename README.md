@@ -26,3 +26,4 @@ cnpm install  qs -S
 cnpm install http-proxy-middleware -D    跨域
 cnpm install xlsx -S   导出表格
 cnpm install react-redux -S
+cnpm install echarts -S   数据可视化    

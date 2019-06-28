@@ -1,6 +1,6 @@
 const defaultState={
     status:"",
-    token:""
+    token: window.sessionStorage.getItem("token")|| ""
 }
 export default (state=defaultState,action)=>{
     
@@ -9,7 +9,6 @@ export default (state=defaultState,action)=>{
             let loginState=JSON.parse(JSON.stringify(state))
             loginState.status=action.value.data.status
             loginState.token=action.value.data.token
-            
             return loginState
         default:
             return state

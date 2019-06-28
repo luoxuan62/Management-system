@@ -9,8 +9,11 @@ export const loginActionAsync=(val)=>{
         console.log(data)
         if(data.code){
             window.sessionStorage.setItem("token",data.data.token)
+            dispatch(loginAction(data))
+            
         }
-        dispatch(loginAction(data))
+        
+        
     }
 }
 
